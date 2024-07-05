@@ -20,8 +20,14 @@ class UsersController extends Controller
         ]);
     }
     
-    public function show(string $id)
+    public function show($id)
     {
-        
+        // idの値でユーザーを検索して取得
+        $user = User::findOrFail($id);
+
+        // ユーザー詳細ビューでそれを表示
+        return view('users.show', [
+            'user' => $user,
+        ]);
     }
 }
